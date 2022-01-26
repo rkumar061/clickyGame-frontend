@@ -1,22 +1,25 @@
 <template>
   <header>
     <div class="logo"></div>
-    <div class="buttons">
+    <!-- <div class="buttons">
       <button class="btn btn-primary" @click="showModal">Play</button>
       <button class="btn btn-primary" @click="showModal">Multiplayer</button>
-    </div>
+    </div> -->
+    <h1> Rapid Clicky Game</h1>
   </header>
 </template>
 
 <script></script>
 
 <style>
+header h1 {
+  text-align: center;
+}
 header {
-  background-color: #f5f5f5;
+  background-color: violet;
   height: 100px;
-
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   align-items: center;
   padding: 0 20px;
 }

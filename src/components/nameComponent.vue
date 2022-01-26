@@ -1,13 +1,16 @@
 <template>
-  <div class="container">
-    <div class="instruction">
-      Enter Your name below click play button it will tack you to single player
-      game to know your level for better match making in multiplayer game.
+  <div class="container1">
+    <div class="instruction1">
+      <strong
+        >Enter Your Nickname below and click on the play button
+        <small>(to know your score)</small>
+      </strong>
     </div>
     <div class="nameip">
-      <input type="text" placeholder="Your Name" v-model="name" />
+      <input type="text" placeholder="Nickname" v-model="name" />
       <button @click="nameToggle()">Play</button>
     </div>
+    <p>eg. Raunak</p>
   </div>
 </template>
 
@@ -31,19 +34,32 @@ export default {
 </script>
 
 <style>
-.container {
+.instruction1 small {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.74);
+}
+.container1 p {
+  margin: -2rem;
+  margin-left: -21rem;
+  font-style: italic;
+  color: rgba(245, 245, 245, 0.589);
+}
+.container1 {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30vh;
+  margin-top: 22vh;
 }
-
-.instruction {
+strong {
+  color: white;
+}
+.instruction1 {
   font-size: 20px;
-  color: #000;
-  text-align: center;
+  color: #fff;
+  text-align: left;
   max-width: 25rem;
 }
 
@@ -57,20 +73,23 @@ input {
   width: 200px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid #000;
-  padding: 0 10px;
+  border: 1px solid rgb(0, 255, 157);
+font-family: cursive;
+padding: 0 10px;
+  margin-right: 1rem;
+  margin-top: 0;
 }
 
-button {
+.nameip button {
   width: 100px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid #000;
-  background-color: #000;
-  color: #fff;
+  border: 1px solid white;
+  background: linear-gradient(#ff469f, #ff6062);
   font-size: 20px;
   cursor: pointer;
-  margin: 1rem;
+  margin: 3rem;
+  margin-left: 1rem;
 }
 @media screen and (max-width: 600px) {
   .container {
