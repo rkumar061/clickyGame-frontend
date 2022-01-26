@@ -4,8 +4,8 @@
       Enter Your name below click play button it will tack you to single player game to know your level for better match making in multiplayer game.
     </div>
     <div class="nameip">
-    <input type="text" placeholder="Your Name">
-    <button>Play</button>
+    <input type="text" placeholder="Your Name" v-model="name">
+    <button @click="nameToggle()">Play</button>
     </div>
     
   </div>
@@ -13,7 +13,21 @@
 
 <script>
 export default {
-  props: ['pname', 'scores'],
+  data() {
+    return {
+      name: '',
+    }
+  
+  },
+  methods: {
+    nameToggle() {
+      if (this.name === '') {
+        alert('Please Enter Your Name');
+      } else {
+        this.$emit('name-toggle', this.name);
+      }
+    }
+  }
 }
 
 </script>
@@ -75,7 +89,7 @@ export default {
     .container button, input {
       width: 100%;
     }
-    
+
   }
     
   
