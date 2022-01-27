@@ -8,9 +8,10 @@
     </div>
     <div class="nameip">
       <input type="text" placeholder="Nickname" v-model="name" />
+      <label for="nickname" class="egm">eg. Raunak</label>
       <button @click="nameToggle()">Play</button>
     </div>
-    <p>eg. Raunak</p>
+    <p class="eg">eg. Raunak</p>
   </div>
 </template>
 
@@ -68,6 +69,9 @@ strong {
   justify-content: center;
   align-items: center;
 }
+.egm{
+  display: none;
+}
 
 input {
   width: 200px;
@@ -106,5 +110,14 @@ padding: 0 10px;
   input {
     width: 100%;
   }
+  .egm{
+    display: block;
+    color: rgba(255, 255, 255, 0.74);
+    text-align: left;
+  }
+  .eg{
+    display: none;
+  }
+
 }
 </style>

@@ -78,15 +78,21 @@ export default {
 }
 .button1 button{
  margin-top: 1rem;
-   width:150px;
+   width:10em;
   background: linear-gradient(#ff469f, #ff6062);
   border-radius: 5px;
-  height: 40px;
+  height: 10em;
   border: 1px solid #000;
   background: linear-gradient(#ff469f, #ff6062);
   font-size: 20px;
   cursor: pointer;
+  border-radius: 50%;
 }
+.button1 button:active {
+  background: linear-gradient(#ff6062, #ff469f);
+}
+  
+
 .button1{
   margin: 0;
   padding: 0;}
