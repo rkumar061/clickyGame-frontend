@@ -2,7 +2,7 @@
   <div class="con2">
     <h1>Congrats, {{ name }}!! you scored:&nbsp; {{ score }}&nbsp; points</h1>
     <h4>
-      You got qualified for <i>{{ Level > 20 ? 'hard' : 'easy'}} level</i>
+      You got qualified for <i>{{getLevel()}} level</i>
     </h4>
     <div class="btn">
       <button @click="multiplayer">Multiplayer</button>
@@ -16,20 +16,8 @@ export default {
   props: ["score", "name", "level"],
   data() {
     return {
-      Level: this.score,
+      Level: '',
     };
-  },
-  watch: {
-    Level: {
-      function(value) {
-        if ( value > 0) {
-          this.Level = 1;
-        }
-         else {
-          this.Level = 3;
-        }
-      },
-    },
   },
   methods: {
     multiplayer() {
@@ -38,6 +26,26 @@ export default {
     tryAgain() {
       this.$emit("tryAgain");
     },
+    getLevel() {
+      if(this.score > 0 && this.score < 15) {
+        this.Level = 'Beginner';
+      } else if(this.score > 15 && this.score < 30) {
+        this.Level = 'Intermediate';
+      } else if(this.score > 30 && this.score < 45) {
+        this.Level = 'Advanced';
+      } else if(this.score > 45 && this.score < 60) {
+        this.Level = 'Expert';
+      } else if(this.score > 60 && this.score < 75) {
+        this.Level = 'Master';
+      } else if(this.score > 75 && this.score < 90) {
+        this.Level = 'Grand Master';
+      } else if(this.score > 90 && this.score < 100) {
+        this.Level = 'Legendary';
+      } else if(this.score > 100) {
+        this.Level = 'Godlike';
+      }
+      return this.Level;
+    }
   },
 };
 </script>

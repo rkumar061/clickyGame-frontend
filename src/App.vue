@@ -17,6 +17,7 @@
     :score="score"
     :name="name"
     @multiplayer="multiplayer"
+    @try-again="tryAgain"
     v-if="scoreCardVisible"
   ></score-card>
 
@@ -42,16 +43,6 @@ export default {
     };
   },
   watch: {
-    // level: {
-    //   function(value) {
-    //   if (value > 0 || this.score >0) {
-    //     this.level = 1;
-    //   } else if (value > 20 || this.score > 20) {
-    //     this.level = 2;
-    //   } else  {
-    //     this.level = 3;
-    //   }
-    //   }, },
       score: {
       handler(value) {
         if (value === 1) {
@@ -59,33 +50,9 @@ export default {
         }
       },
       immediate: true,
-      // score(value) {
-      // if (value > 0) {
-      //   this.level = 1;
-      // } else if (value > 20) {
-      //   this.level = 2;
-      // } else {
-      //   this.level = 3;
-      // }
-      // },
     },
   },
-  // watch: {
-  //  score(value) {
-  //     if (value > 0) {
-  //       this.level = 1;
-  //     } else if (value > 20) {
-  //       this.level = 2;
-  //     } else {
-  //       this.level = 3;
-  //     }
-  //     },
-  // },
-  // computed: {
-  //   levelAdd()  {
-  //     if (this.score > 0) return
-  //       this.level = 1;
-  //   },
+  
   methods: {
     nameToggle(uname) {
       this.nameVisible = !this.nameVisible;
@@ -113,6 +80,12 @@ export default {
       this.scoreCardVisible = !this.scoreCardVisible;
       this.multiGameVisible = !this.multiGameVisible;
     },
+    tryAgain() {
+      this.scoreCardVisible = !this.scoreCardVisible;
+      this.gameVisible = !this.gameVisible;
+      this.score = 0;
+      this.time = 5;
+    },
   },
 };
 
@@ -125,4 +98,5 @@ body {
   background-color: rgba(8, 9, 12, 1);
   font-family: "Poppins", sans-serif;
 }
+
 </style>
