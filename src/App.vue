@@ -36,7 +36,7 @@ export default {
       scoreCardVisible: false,
       multiGameVisible: false,
       score: 0,
-      time: 5,
+      time: 15,
       name: "",
       scoreValue: 0,
     };

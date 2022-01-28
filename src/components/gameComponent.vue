@@ -42,10 +42,10 @@ export default {
     scoreValue: function (value) {
       if (value > 0 && value < 20) {
         this.gree = true;
-      } else if (value < 35 && value > 20 ) {
+      } else if (value > 20 && value < 35) {
         this.orang = true;
         this.gree = false;
-      } else if (value < 45 && value > 35) {
+      } else if (value > 35 && value < 45) {
         this.redd = true;
         this.gree = false;
         this.orang = false;
@@ -67,7 +67,6 @@ export default {
     },
     showGreen() {
       return { green: this.gree, orange: this.orang, red: this.redd };
-      
     },
   },
 };
@@ -100,6 +99,7 @@ export default {
   width: 20%;
   height: 20px;
   background-color: rgb(255, 249, 215);
+  width: 45vh;
 }
 .scoreValue {
   font-size: 50px;
@@ -112,6 +112,7 @@ export default {
   justify-content: flex-start;
   align-content: center;
   align-items: center;
+  width: 45vh;
 }
 .scoreValue p {
   font-size: 10px;
@@ -153,7 +154,7 @@ export default {
   font-size: 20px;
   cursor: pointer;
   border-radius: 50%;
-animation: glow 1s infinite alternate;
+  animation: glow 1s infinite alternate;
 }
 
 @keyframes glow {
