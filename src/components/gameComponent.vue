@@ -40,12 +40,12 @@ export default {
   props: ["scoreValue", "time"],
   watch: {
     scoreValue: function (value) {
-      if (value > 0 && value < 16) {
+      if (value > 0 && value < 20) {
         this.gree = true;
-      } else if (value < 28 && value > 16 ) {
+      } else if (value < 35 && value > 20 ) {
         this.orang = true;
         this.gree = false;
-      } else if (value < 50 && value > 28) {
+      } else if (value < 45 && value > 35) {
         this.redd = true;
         this.gree = false;
         this.orang = false;

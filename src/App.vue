@@ -20,7 +20,6 @@
     @try-again="tryAgain"
     v-if="scoreCardVisible"
   ></score-card>
-  <multiplayer-Match></multiplayer-Match> 
 
   <being-matched v-if="multiGameVisible"> </being-matched>
 </template>

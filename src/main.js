@@ -5,7 +5,6 @@ import headerComponent from './components/headerComponent.vue';
 import gameComponent from './components/gameComponent.vue';
 import scoreCard from './components/scoreCard.vue';
 import beingMatched from './components/beingMatched.vue';
-import multiplayerMatch from './components/multiplayerMatch.vue';
 import lmao from './components/lmao.vue'
 const app = createApp(App);
 
@@ -14,7 +13,6 @@ app.component('name-component', nameComponent);
 app.component('game-component', gameComponent);
 app.component('score-card', scoreCard);
 app.component('being-matched', beingMatched);
-app.component('multiplayerMatch', multiplayerMatch);
 app.component('lmao',lmao)
 
 app.mount('#app');
