@@ -2,7 +2,7 @@
   <div class="container">
     <div class="instruction">
       <h1>
-        Your most welcome to my Rapid Clicky Game! <br />
+        Your most welcome to my Rapid Clicky Game!<br />
         <small> Rapid click the below button to know your score </small>
       </h1>
     </div>
@@ -10,7 +10,14 @@
     Time remaining = <i> {{ time }} seconds </i>
     <div class="game">
       <div class="score">
-        <div class="scoreValue" :style="BarColor"></div>
+        <div class="scoreValue" :style="BarColor" :class="showGreen"></div>
+      </div>
+      <div class="score">
+        <div class="scoreValue">
+          <div class="green"><p>Easy</p></div>
+          <div class="orange"><p>Medium</p></div>
+          <div class="red"><p>Hard</p></div>
+        </div>
       </div>
       <div class="button1">
         <button @click="buttonClicked">
@@ -23,7 +30,28 @@
 
 <script>
 export default {
+  data() {
+    return {
+      gree: true,
+      orang: false,
+      redd: false,
+    };
+  },
   props: ["scoreValue", "time"],
+  watch: {
+    scoreValue: function (value) {
+      if (value > 0 && value < 16) {
+        this.gree = true;
+      } else if (value < 28 && value > 16 ) {
+        this.orang = true;
+        this.gree = false;
+      } else if (value < 50 && value > 28) {
+        this.redd = true;
+        this.gree = false;
+        this.orang = false;
+      }
+    },
+  },
   methods: {
     buttonClicked() {
       this.$emit("button-clicked");
@@ -34,8 +62,12 @@ export default {
   computed: {
     BarColor() {
       return {
-        width: this.scoreValue + "%",
+        width: this.scoreValue + "vh",
       };
+    },
+    showGreen() {
+      return { green: this.gree, orange: this.orang, red: this.redd };
+      
     },
   },
 };
@@ -46,7 +78,7 @@ export default {
   margin: 0;
   padding: 0;
   color: white;
-  margin-top: 15vh;
+  margin-top: 10vh;
   text-align: center;
 }
 .container small {
@@ -74,11 +106,45 @@ export default {
   background-color: rgb(255, 0, 0);
   text-align: center;
   height: 20px;
- margin-top: 1rem;
+  margin-top: 1rem;
+  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
 }
-.button1 button{
- margin-top: 1rem;
-   width:10em;
+.scoreValue p {
+  font-size: 10px;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+  margin-top: 2px;
+}
+.green {
+  height: 19px;
+  width: 20vh;
+  background: greenyellow;
+}
+.green p {
+  color: #000;
+}
+.orange {
+  background: orangered;
+  height: 20px;
+  width: 15vh;
+}
+.red {
+  background-color: red;
+  height: 20px;
+  width: 10vh;
+}
+.red p {
+  text-align: center;
+}
+.button1 button {
+  margin-top: 2rem;
+  width: 10em;
   background: linear-gradient(#ff469f, #ff6062);
   border-radius: 5px;
   height: 10em;
@@ -87,13 +153,23 @@ export default {
   font-size: 20px;
   cursor: pointer;
   border-radius: 50%;
+animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px #aef4af;
+  }
+  to {
+    box-shadow: 0 0 10px 10px #aef4af;
+  }
 }
 .button1 button:active {
   background: linear-gradient(#ff6062, #ff469f);
 }
-  
 
-.button1{
+.button1 {
   margin: 0;
-  padding: 0;}
+  padding: 0;
+}
 </style>

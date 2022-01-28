@@ -7,7 +7,12 @@
       </strong>
     </div>
     <div class="nameip">
-      <input type="text" placeholder="Nickname" v-model="name" />
+      <input
+        type="text"
+        placeholder="Nickname"
+        v-model="name"
+        v-on:keyup.enter="nameToggle()"
+      />
       <label for="nickname" class="egm">eg. Raunak</label>
       <button @click="nameToggle()">Play</button>
     </div>
@@ -69,7 +74,7 @@ strong {
   justify-content: center;
   align-items: center;
 }
-.egm{
+.egm {
   display: none;
 }
 
@@ -78,8 +83,8 @@ input {
   height: 40px;
   border-radius: 5px;
   border: 1px solid rgb(0, 255, 157);
-font-family: cursive;
-padding: 0 10px;
+  font-family: cursive;
+  padding: 0 10px;
   margin-right: 1rem;
   margin-top: 0;
 }
@@ -94,6 +99,16 @@ padding: 0 10px;
   cursor: pointer;
   margin: 3rem;
   margin-left: 1rem;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px -5px #aef4af;
+  }
+  to {
+    box-shadow: 0 0 5px 5px #aef4af;
+  }
 }
 @media screen and (max-width: 600px) {
   .container {
@@ -110,14 +125,13 @@ padding: 0 10px;
   input {
     width: 100%;
   }
-  .egm{
+  .egm {
     display: block;
     color: rgba(255, 255, 255, 0.74);
     text-align: left;
   }
-  .eg{
+  .eg {
     display: none;
   }
-
 }
 </style>

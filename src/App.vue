@@ -20,8 +20,9 @@
     @try-again="tryAgain"
     v-if="scoreCardVisible"
   ></score-card>
+  <multiplayer-Match></multiplayer-Match> 
 
-  <multiplayer-game v-if="multiGameVisible"> </multiplayer-game>
+  <being-matched v-if="multiGameVisible"> </being-matched>
 </template>
 
 <script>
@@ -38,12 +39,11 @@ export default {
       score: 0,
       time: 5,
       name: "",
-      level: 0,
       scoreValue: 0,
     };
   },
   watch: {
-      score: {
+    score: {
       handler(value) {
         if (value === 1) {
           this.starttimer();
@@ -52,7 +52,7 @@ export default {
       immediate: true,
     },
   },
-  
+
   methods: {
     nameToggle(uname) {
       this.nameVisible = !this.nameVisible;
@@ -88,7 +88,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <style>
@@ -98,5 +97,4 @@ body {
   background-color: rgba(8, 9, 12, 1);
   font-family: "Poppins", sans-serif;
 }
-
 </style>
