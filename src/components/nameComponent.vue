@@ -14,9 +14,10 @@
         v-on:keyup.enter="nameToggle()"
       />
       <label for="nickname" class="egm">eg. Raunak</label>
+      <!-- <form @submit.prevent="SubmitName"> -->
       <button @click="nameToggle()">Play</button>
     </div>
-    <p class="eg">eg. Raunak</p>
+    <p class="eg">{{lmao}}</p>
   </div>
 </template>
 
@@ -25,16 +26,39 @@ export default {
   data() {
     return {
       name: "",
+      lmao: [],
     };
   },
+
   methods: {
     nameToggle() {
       if (this.name === "") {
         alert("Please Enter Your Name");
       } else {
-        this.$emit("name-toggle", this.name);
+        this.$emit("name-toggle", { name: this.name });
       }
+      fetch(
+        "https://clicky-1f03f-default-rtdb.asia-southeast1.firebasedatabase.app/rajup.json"
+      )
+        .then((response) =>{
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) =>{
+          console.log(data);
+          const lmao = [];
+          for (const id in data) {
+            lmao.push({ id: id, name: data[id].name });
+          }
+          this.lmao = lmao;
+        });
     },
+    // method: 'POST',
+    // headers: {
+    //   'Content-Type': 'application/json'
+    // },
+    // body: JSON.stringify({ name: this.name }),
   },
 };
 </script>
