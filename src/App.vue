@@ -22,7 +22,7 @@
     @level="level"
   ></score-card>
 
-  <being-matched v-if="multiGameVisible" :players="players"> </being-matched>
+  <Leaderboard v-if="multiGameVisible" :players="players"> </Leaderboard>
 </template>
 
 <script>

@@ -47,6 +47,7 @@ export default {
       this.$emit("level", this.Level);
       return this.Level;
     },
+    
   },
 };
 </script>
