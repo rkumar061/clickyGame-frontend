@@ -56,16 +56,6 @@ export default {
     buttonClicked() {
       this.$emit("button-clicked");
       // console.log("buttonClicked");
-      fetch(
-        "https://clicky-1f03f-default-rtdb.asia-southeast1.firebasedatabase.app/rajup.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ value: this.scoreValue }),
-        }
-      );
     },
   },
 

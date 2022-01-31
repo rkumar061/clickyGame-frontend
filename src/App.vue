@@ -16,12 +16,13 @@
   <score-card
     :score="score"
     :name="name"
-    @multiplayer="multiplayer"
+    @leaderboard="leaderboard"
     @try-again="tryAgain"
     v-if="scoreCardVisible"
+    @level="level"
   ></score-card>
 
-  <being-matched v-if="multiGameVisible"> </being-matched>
+  <being-matched v-if="multiGameVisible" :players="players"> </being-matched>
 </template>
 
 <script>
@@ -36,9 +37,11 @@ export default {
       scoreCardVisible: false,
       multiGameVisible: false,
       score: 0,
-      time: 15,
+      time: 5,
       name: "",
-      scoreValue: 0,
+      Level: "",
+      players: [],
+      
     };
   },
   watch: {
@@ -51,13 +54,24 @@ export default {
       immediate: true,
     },
   },
+  // computed: {
+  //   players() {
+  //     return [
+  //       {
+  //         name: this.name,
+  //         score: this.score,
+  //         level: this.Level,
+  //       },
+  //     ];
+  //   },
+  // },
 
   methods: {
-    nameToggle(uname) {
+    nameToggle(data) {
       this.nameVisible = !this.nameVisible;
       this.gameVisible = !this.gameVisible;
-      this.name = uname;
-      console.log(uname);
+      this.name = data.name;
+      console.log(data.name);
       // console.log(this.nameVisible);
     },
     buttonClicked() {
@@ -75,15 +89,30 @@ export default {
         }
       }, 1000);
     },
-    multiplayer() {
+    leaderboard() {
       this.scoreCardVisible = !this.scoreCardVisible;
       this.multiGameVisible = !this.multiGameVisible;
+      fetch("https://clicky-1f03f-default-rtdb.asia-southeast1.firebasedatabase.app/leaderboard.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.name,
+          score: this.score,
+          level: this.Level,
+        }),
+      });
+      
     },
     tryAgain() {
       this.scoreCardVisible = !this.scoreCardVisible;
       this.gameVisible = !this.gameVisible;
       this.score = 0;
       this.time = 5;
+    },
+    level(data) {
+      this.Level = data;
     },
   },
 };

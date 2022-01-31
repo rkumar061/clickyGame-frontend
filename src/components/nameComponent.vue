@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       name: "",
-      lmao: [],
+      
     };
   },
 
@@ -37,22 +37,22 @@ export default {
       } else {
         this.$emit("name-toggle", { name: this.name });
       }
-      fetch(
-        "https://clicky-1f03f-default-rtdb.asia-southeast1.firebasedatabase.app/rajup.json"
-      )
-        .then((response) =>{
-          if (response.ok) {
-            return response.json();
-          }
-        })
-        .then((data) =>{
-          console.log(data);
-          const lmao = [];
-          for (const id in data) {
-            lmao.push({ id: id, name: data[id].name });
-          }
-          this.lmao = lmao;
-        });
+      // fetch(
+      //   "https://clicky-1f03f-default-rtdb.asia-southeast1.firebasedatabase.app/rajup.json"
+      // )
+      //   .then((response) =>{
+      //     if (response.ok) {
+      //       return response.json();
+      //     }
+      //   })
+      // .then((data) =>{
+      //   console.log(data);
+      //   const lmao = [];
+      //   for (const id in data) {
+      //     lmao.push({ id: id, name: data[id].name });
+      //   }
+      //   this.lmao = lmao;
+      // });
     },
     // method: 'POST',
     // headers: {

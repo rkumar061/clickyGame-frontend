@@ -5,8 +5,8 @@
       You got qualified for <i>{{ getLevel() }} level</i>
     </h4>
     <div class="btn">
-      <button @click="multiplayer">Multiplayer</button>
-      <button @click="tryAgain">Try Again</button>
+      <button @click="tryAgain">Try Again </button>
+      <button @click="multiplayer">score Card >></button>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     multiplayer() {
-      this.$emit("multiplayer");
+      this.$emit("leaderboard");
     },
     tryAgain() {
       this.$emit("tryAgain");
@@ -33,18 +33,18 @@ export default {
         this.Level = "Medium";
       } else if (this.score < 40) {
         this.Level = "Hard";
+      }else if(this.score > 45 && this.score < 60) {
+        this.Level = 'Expert';
+      } else if(this.score > 60 && this.score < 75) {
+        this.Level = 'Master';
+      } else if(this.score > 75 && this.score < 90) {
+        this.Level = 'Grand Master';
+      } else if(this.score > 90 && this.score < 100) {
+        this.Level = 'Legendary';
+      } else if(this.score > 100) {
+        this.Level = 'Godlike';
       }
-      // } else if(this.score > 45 && this.score < 60) {
-      //   this.Level = 'Expert';
-      // } else if(this.score > 60 && this.score < 75) {
-      //   this.Level = 'Master';
-      // } else if(this.score > 75 && this.score < 90) {
-      //   this.Level = 'Grand Master';
-      // } else if(this.score > 90 && this.score < 100) {
-      //   this.Level = 'Legendary';
-      // } else if(this.score > 100) {
-      //   this.Level = 'Godlike';
-      // }
+      this.$emit("level", this.Level);
       return this.Level;
     },
   },
